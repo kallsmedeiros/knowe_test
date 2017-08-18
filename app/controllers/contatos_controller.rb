@@ -1,7 +1,16 @@
 require 'csv'
 class ContatosController < ApplicationController
 
+  before_action :validate_login
   before_action :set_contato, only: [:show, :edit, :update, :destroy]
+
+  def validate_login
+    if @online.eql? nil
+      redirect_to :controller => '/login', :action => 'index'
+    else
+      return true
+    end
+  end
 
   # GET /contatos
   # GET /contatos.json
