@@ -5,6 +5,7 @@ class Contato < ApplicationRecord
   validates :telefone,:presence => true,
                  :numericality => true,
                  :length => { :minimum => 10, :maximum => 15 }
+  validates :email, uniqueness: true
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
