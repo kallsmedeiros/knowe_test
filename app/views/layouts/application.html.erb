@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testeknowe</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <p>
+  <%= "Olá #{@online.try(:nome)}" unless @online.eql? nil  %>
+  <% unless @online.eql? nil %>
+    <a href="<%= url_for :controller => 'application', :action => 'logout' -%>">Logout</a>
+    <%= link_to 'Usuarios', usuarios_path %>
+    <%= link_to 'Contatos', contatos_path %>
+  <%end%>
+  </p>
+  <body>
+    <%= yield %>
+  </body>
+</html>
